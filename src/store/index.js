@@ -1,26 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import tienda from '@/tienda/tienda.json'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     usuario: '',
-    fomSubscripcion: '',
-    vh_form: 'vh-75',
-    tienda: [],
+    tienda: tienda || [],
     el_carrito: '',
-    enCarrito: ''
+    enCarrito: JSON.parse(localStorage.getItem('producto')) === null ? [] : JSON.parse(localStorage.getItem('producto')),
+    producto_a_carrito: []
   },
   mutations: {
     getUser (state) {
-      const DatosUsuario = sessionStorage.getItem('usuario')
+      const DatosUsuario = localStorage.getItem('usuario')
       if (DatosUsuario != null) {
-        state.usuario = JSON.parse(DatosUsuario)
-      }
-      if (state.usuario !== '') {
-        state.fomSubscripcion = 'd-none'
-        state.vh_form = ''
+        state.usuario = DatosUsuario
       }
     },
     fede (state) {
@@ -45,10 +41,11 @@ export default new Vuex.Store({
         localStorage.setItem('producto', JSON.stringify(productos))
         state.enCarrito = []
       }
+    },
+    limpiar_compra (state) {
+      state.enCarrito = ''
+      localStorage.removeItem('producto')
+      window.location.pathname = 'about'
     }
-  },
-  actions: {
-  },
-  modules: {
   }
 })

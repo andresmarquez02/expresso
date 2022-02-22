@@ -1,6 +1,6 @@
 <template>
-  <div class="d-inline">
-    <button type="button" class="btn btn-light rounded-pill shadow" v-on:click="show(0)">Pagar</button>
+  <div>
+    <button type="button" class="btn btn-danger w-100 rounded-pill" id="button_pagar" v-on:click="show(0)">Confirmar Orden</button>
     <div class="lxmodal23 no-scale" id="Lexachange12#er">
     <div class="lxdialogo23">
         <div class="lxcontainer23">
@@ -37,9 +37,10 @@
   </div>
 </template>
 <script>
+import { mapMutations } from 'vuex'
 export default {
   name: 'Pagar',
-  props: ['apiKey', 'ip', 'monto'],
+  props: ['apiKey', 'ip', 'monto', 'ejecute'],
   methods: {
     show (value) {
       const modal = document.querySelector('.lxmodal23')
@@ -94,7 +95,8 @@ export default {
       form.append('monto', this.monto)
       form.append('mi_ip', formulario.elements[0].value)
       form.append('email', formulario.elements[1].value)
-      const c = await fetch('https://lexachange.herokuapp.com/api/transferencia/lexa', {
+      // http://localhost/Lexachange/public/api/transferencia/lexa
+      const c = await fetch('http://localhost/Lexachange/public/api/transferencia/lexa', {
         method: 'POST',
         body: form
       })
@@ -105,6 +107,11 @@ export default {
       } else if (c.status === 200) {
         document.querySelector('.lxgeneralerror23').style.color = 'green'
         document.querySelector('.lxgeneralerror23').textContent = r.mensaje
+        formulario.elements[0].value = ''
+        formulario.elements[1].value = ''
+        if (this.ejecute !== 'none') {
+          this.limpiar_compra()
+        }
         if (document.getElementById('lxR')) {
           const redirect = document.getElementById('lxR')
           location.href = redirect
@@ -122,7 +129,8 @@ export default {
         el.textContent = ''
       })
       div.classList.add('lxnone-preload')
-    }
+    },
+    ...mapMutations(['limpiar_compra'])
   }
 }
 </script>

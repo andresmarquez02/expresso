@@ -1,94 +1,88 @@
 <template>
-    <div class="mt-4">
-        <div :class="fomSubscripcion">
-            <div class="row m-0 h-100 pt-5 px-md-5 px-3 text-secondary" id="home_expresso">
-                <div class="col-12 mb-3 text-center">
-                    <h1 class="font-weight-light ">Suscribete</h1>
-                </div>
-                <div class="col-md-3 p-0">
-                    <div class="form-group">
-                        <input type="text" class="form-control border-0 rounded-0" v-model="nombre" placeholder="Nombre" minlength="4"
-                        maxlength="255">
-                        <small class="text_info" :class="errores">El nombre debe tener al menos 5 caracteres.</small>
-                    </div>
-                </div>
-                <div class="col-md-3 p-0">
-                    <div class="form-group">
-                        <input type="email" class="form-control border-0 rounded-0" v-model="correo" placeholder="Correo"
-                        minlength="4" maxlength="255">
-                        <small class="text_info" :class="errores">Recuerde @ y .com en su correo</small>
-                    </div>
-                </div>
-                <div class="col-md-3 p-0 mb-3">
-                    <div class="form-group">
-                        <input type="number" class="form-control border-0 rounded-0" v-model="telefono" v-on:keyup.Enter="subscripcion()"
-                        placeholder="Num° Telefono">
-                        <small class="text_info" :class="errores">El num° de telefono debe tener al menos 7 digitios</small>
-                    </div>
-                </div>
-                <div class="col-md-3 p-0">
-                        <button type="button" class="btn btn-danger btn-block rounded-0" v-on:click="subscripcion()">Suscribirme</button>
-                </div>
-            </div>
-        </div>
+  <div class="mt-12">
+    <v-container
+      class="justify-center mb-10 d-flex"
+      v-if="$store.state.usuario == ''"
+    >
+      <v-form v-on:submit.prevent="subscripcion()" class="w-md-50 w-80">
         <div>
-            <footer class="row m-0 text-secondary h-auto pb-5" id="footer">
-                <div class="col-md-12 d-flex justify-content-center">
-                    <div class="w-md-50 mt-4">
-                        <h1 class="display-4 text-center my-3 font-weight-bold ">Expresso</h1>
-                        <div class="text-muted text-center my-3">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Excepturi, deleniti
-                            laboriosam! Illum hic accusantium error neque atque maxime nobis modi iure
-                            dicta, odio asperiores magnam itaque voluptates beatae facere necessitatibus?
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 py-3 d-flex justify-content-center">
-                    <span>Politicas de privacidad. | Politicas de uso. | Cookies y permisos. </span>
-                </div>
-            </footer>
+          <h2 class="mb-6 grey--text">Subcribete a Expresso</h2>
+          <v-text-field
+            v-model="correo"
+            :rules="emailRules"
+            label="Correo"
+            required
+            class="d-inline"
+          ></v-text-field>
+          <v-btn color="red darken-4" type="submit" text class="d-inline"> subcribirme </v-btn>
         </div>
-      </div>
+      </v-form>
+    </v-container>
+    <v-card>
+      <v-footer class="pa-0">
+        <v-card flat tile width="100%" class="text-center white accent-1">
+          <v-card-text>
+            <a :href="icon.link" target="_blank" rel="noopener noreferrer" v-for="icon in icons" :key="icon.icon" >
+              <v-btn bag class="mx-4" icon>
+                <v-icon size="24px">
+                  {{ icon.icon }}
+                </v-icon>
+              </v-btn>
+            </a>
+          </v-card-text>
+          <div class="px-4 d-flex justify-content-center">
+            <v-divider class="red lighten-4"></v-divider>
+          </div>
+          <v-card-text>
+            {{ new Date().getFullYear() }} — <strong class="red--text">Expresso</strong>
+          </v-card-text>
+        </v-card>
+      </v-footer>
+    </v-card>
+    <Alert :init="initAlert" :type="typeAlert" :msg="msg" />
+  </div>
 </template>
 <script>
-import { mapState } from 'vuex'
-export default {
-  data: function () {
-    return {
-      count: 1,
-      nombre: '',
-      telefono: '',
-      correo: '',
-      errores: 'd-none',
-      vh_form: ''
-    }
-  },
-  methods: {
-    subscripcion () {
-      const v = {
-        nombres: /^[a-zA-ZÁ-ÿ\s]{5,255}$/,
-        telefono: /^\d{7,50}$/,
-        correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/
-      }
-      if (v.nombres.test(this.nombre) && v.telefono.test(this.telefono) && v.correo.test(this.correo)) {
-        const usuario = {
-          nombre: this.nombre,
-          telefono: this.telefono,
-          correo: this.correo
+  import Alert from '@/components/Alert.vue'
+
+  export default {
+    components:{
+      Alert
+    },
+    data() {
+      return {
+        correo: "",
+        icons: [
+          {icon: "mdi-facebook", link: "https://www.facebook.com/andresmarquez02/"},
+          {icon: "mdi-instagram", link: "https://www.instagram.com/andres_marquez02"}, 
+          {icon: "mdi-whatsapp", link: "https://api.whatsapp.com/send/?phone=%2B584129298833&text&app_absent=0"}, 
+          {icon: "mdi-github", link: "https://github.com/andresmarquez02"}
+        ],
+        emailRules: [
+          (value) => !!value || "Requerido.",
+          (value) => {
+            const pattern =
+              /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return pattern.test(value) || "Correo invalido";
+          },
+        ],
+        msg: '',
+        typeAlert: '',
+        initAlert: false
+      };
+    },
+    methods: {
+      subscripcion() {
+        const email = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
+        if (this.correo !== "" && email.test(this.correo)) {
+          localStorage.setItem("usuario", this.correo);
+          this.$store.state.usuario = this.correo;
+        } else {
+          this.msg = "Correo Electronico invalido";
+          this.typeAlert = "error";
+          this.initAlert = true;
         }
-        sessionStorage.setItem('usuario', JSON.stringify(usuario))
-        alert('Presione aceptar para finalizar la subscripcion.')
-        this.errroes = 'd-none'
-        this.nombre = ''
-        this.correo = ''
-        this.telefono = ''
-      } else {
-        this.errores = 'd-block'
-      }
-    }
-  },
-  computed: {
-    ...mapState(['fomSubscripcion'])
-  }
-}
+      },
+    },
+  };
 </script>
