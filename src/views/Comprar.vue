@@ -151,7 +151,7 @@
 
               <div class="py-5 col-12">
                 <v-btn color="red lighten-2" text v-on:click="pagar()">Confirmar Orden</v-btn>
-                <Pagar apiKey="3DywEb_ZBIXFYtC0#Rd#HslJKn%Ue1" ip="cgURN_Isdx7oqt#ZADe3uKwF8" :monto="parseInt(recibo + recibo / 2)" ejecute="limpiar_compra" />
+                <Pagar apiKey="JOr5b3I8ovLag7Ytkq#EUQZ1eimNdz" ip="cb%3jsoQ6geYRmWywIX4Lu2S@" :monto="parseInt(recibo + recibo / 2)" ejecute="limpiar_compra" />
               </div>
             </div>
           </div>
@@ -175,9 +175,9 @@ export default {
       enCarrito: [],
       planificado: '',
       recibo: 0,
-      nombre: 'asdad',
-      telefono: '124234',
-      correo: 'aaa@gmail.com',
+      nombre: '',
+      telefono: '',
+      correo: '',
       ubicacion: '',
       time: null,
       menu2: false,
@@ -250,7 +250,6 @@ export default {
         correo.test(this.correo) &&
         this.ubicacion !== "" &&
         this.planificado !== '' &&
-        tiempo > tiempoActual &&
         this.time !== null
       ) {
         const pago = document.querySelector('#button_pagar')
