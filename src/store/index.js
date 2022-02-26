@@ -45,7 +45,7 @@ export default new Vuex.Store({
     limpiar_compra (state) {
       state.enCarrito = ''
       localStorage.removeItem('producto')
-      window.location.pathname = 'about'
+      window.location.pathname = 'tienda'
     }
   }
 })
