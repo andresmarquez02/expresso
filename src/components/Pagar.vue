@@ -96,7 +96,6 @@ export default {
       form.append('mi_ip', formulario.elements[0].value)
       form.append('email', formulario.elements[1].value)
       // http://localhost/Lexachange/public/api/transferencia/lexa
-      perfil
       const c = await fetch('https://lexachange.herokuapp.com/api/transferencia/lexa', {
         method: 'POST',
         body: form
