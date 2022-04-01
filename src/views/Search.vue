@@ -2,7 +2,7 @@
 <template>
   <div>
     <Nav/>
-    <div class="px-4 m-0 mt-5 row">
+    <div class="px-4 m-0 mt-5 row ma-0">
         <div class="col-12 text-uppercase ">
           <h2 class="font-weight-bolder">Productos</h2>
         </div>
@@ -10,7 +10,7 @@
           <Producto :producto="value" />
         </div>
     </div>
-    <div class="row" v-if="error">
+    <div class="row ma-0" v-if="error">
       <div class="py-5 text-center col-12 h1 font-weight-bold">No se encontraron coincidencias.. </div>
     </div>
     <Add/>

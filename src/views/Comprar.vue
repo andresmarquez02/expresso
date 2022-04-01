@@ -132,7 +132,7 @@
           elevation="2"
         >
           <div class="pa-4">
-            <div class="row">
+            <div class="row ma-0">
               <div class="text-start col-5 font-weight-bold text-uppercase">Producto</div>
               <div class="text-right col-5 font-weight-bold text-uppercase">Total</div>
               <template v-for="(carrito,i) in enCarrito">

@@ -3,7 +3,7 @@
     <div v-if="enCarrito != ''">
         <ul class="list-group fixed-bottom list-fixed hidexs" id="list_list">
             <li class="px-1 pb-1 text-center list-group-item">
-                <div class="m-0 row">
+                <div class="ma-0 row">
                     <div class="col-9">
                         Carrito
                     </div>
@@ -14,7 +14,7 @@
                 </div>
             </li>
             <li class="pb-1 list-group-item">
-                <div class="m-0 row">
+                <div class="ma-0 row">
                     <div class="col-4">
                         Producto
                     </div>
@@ -27,7 +27,7 @@
                 </div>
             </li>
             <li class="px-1 py-1 list-group-item no-hover-list">
-                <div class="m-0 row" :key="carrito.producto" v-for="(carrito,i) in enCarrito">
+                <div class="ma-0 row" :key="carrito.producto" v-for="(carrito,i) in enCarrito">
                     <div class="col-12" v-if="i !== 0"><hr></div>
                     <div class="col-4">
                         {{carrito.producto}}

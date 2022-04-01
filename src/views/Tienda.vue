@@ -3,7 +3,7 @@
   <div class="grey lighten-5">
     <Nav/>
     <div class="px-2">
-      <v-row class="px-2 mt-5 px-md-12">
+      <v-row class="px-2 mt-5 px-md-12 ma-0">
         <v-col class="col-12">
           <h2 class="font-weight-bolder">Productos</h2>
           <hr class="m-1 red" style="height:2px;width:34px">

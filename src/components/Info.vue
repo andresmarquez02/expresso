@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div style="overflow-x: hidden;">
     <div class="grey lighten-4 d-flex info-box">
-      <div class="m-0 row w-100">
+      <div class="ma-0 row w-100">
           <div class="col-12" style="position:relative">
             <div style="z-index:10;position:relative">
               <h1 class="text-center display-2 font-weight-bold">

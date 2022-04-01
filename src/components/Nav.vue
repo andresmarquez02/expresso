@@ -1,7 +1,7 @@
 <template>
   <div>
-    <v-row class="grey darken-4 white--text" style="height:5rem">
-      <v-col cols="8" class="">
+    <v-row class="ma-0 grey darken-4 white--text" style="height:5rem">
+      <div class="col-md-8 col-6">
         <div class="pb-0 pa-3">
           <v-tooltip bottom class="mr-3 d-inline" v-model="show1">
             <template v-slot:activator="{ on, attrs }">
@@ -35,8 +35,8 @@
             <span>andresmarquez02@gmail.com</span>
           </v-tooltip>
         </div>
-      </v-col>
-      <v-col cols="4" class="justify-end d-flex">
+      </div>
+      <div class="justify-end d-flex col-md-4 col-6">
         <div class="pb-0 pa-3">
           <v-tooltip bottom class="d-inline" v-model="show3">
             <template v-slot:activator="{ on, attrs }">
@@ -104,10 +104,10 @@
             </v-tooltip>
           </span>
         </div>
-      </v-col>
+      </div>
     </v-row>
     <div class="py-4 bg-home-left">
-      <div class="row">
+      <div class="row ma-0">
         <div class="col-md-3">
           <h1
             class="pl-3 mb-3 text-center display-2 white--text font-weight-bold text-sm-text-md-left mb-md-0"
@@ -117,7 +117,7 @@
         </div>
         <div class="col-md-7 col-12 px-md-0 px-7">
           <form class="w-85" v-on:submit.prevent="search">
-            <div class="row">
+            <div class="row ma-0">
               <div class="col-md-8 col-12">
                 <v-text-field :rules="rules" class="mt-0 white--text" dark v-model="q" placeholder="Buscar Producto"></v-text-field>
               </div>

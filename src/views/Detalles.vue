@@ -1,7 +1,7 @@
 <template>
   <div class="grey lighten-5" v-if="producto !== ''">
     <Nav/>
-    <div class="px-4 py-5 row">
+    <div class="px-4 py-5 row ma-0">
       <div class="col-md-7 col-12">
         <img :src="producto.img" class="rounded img-product-detail">
         <div class="mt-4">
@@ -72,7 +72,7 @@
       </div>
     </div>
     <div class="px-2">
-      <v-row class="px-2 mt-5 px-md-12">
+      <v-row class="ma-0 px-2 mt-5 px-md-12">
         <v-col class="col-12">
           <h2 class="font-weight-bolder">Productos que te Pueden Interesar</h2>
           <hr class="m-1 red" style="height:2px;width:34px">

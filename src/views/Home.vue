@@ -3,7 +3,7 @@
   <div>
     <Nav/>
     <div class="px-2">
-      <v-row class="px-2 mt-5 px-md-12">
+      <v-row class="px-2 mt-5 px-md-12 ma-0">
         <v-col class="col-md-10 col-sm-9 col-12">
           <h2 class="font-weight-bolder">Nuevos Productos</h2>
           <hr class="m-1 red" style="height:2px;width:34px">
@@ -24,7 +24,7 @@
     </div>
     <Info />
     <div class="px-2">
-      <v-row class="px-2 mt-5 px-md-12">
+      <v-row class="px-2 mt-5 px-md-12 ma-0">
         <v-col class="col-12">
           <h2 class="font-weight-bolder">Promociones Expressas</h2>
           <hr class="m-1 red" style="height:2px;width:34px">
@@ -37,7 +37,7 @@
       </v-row>
     </div>
     <div class="px-2">
-      <v-row class="px-2 mt-5 px-md-12">
+      <v-row class="px-2 mt-5 px-md-12 ma-0">
         <v-col class="col-12">
           <h2 class="font-weight-bolder">Más Productos</h2>
           <hr class="m-1 red" style="height:2px;width:34px">
