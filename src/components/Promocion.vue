@@ -2,7 +2,7 @@
   <div>
     <v-card style="width:100%" class="mb-4">
       <v-row class="ma-0">
-        <v-col cols="6 py-0">
+        <v-col cols="6 py-2 my-auto">
           <template slot="progress">
             <v-progress-linear
               color="deep-purple"
