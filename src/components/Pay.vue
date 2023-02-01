@@ -11,6 +11,7 @@
                     </button>
             </div>
             <div class="lxbody23">
+                <label style="color: grey" for="">Lexachange en estos momentos no esta disponible</label>
                 <form action="" method="post" v-on:submit.prevent="formulario()" id="lxformsub23">
                     <div class="lxcmpos23">
                         <input type="text" maxlenght=25 minlenght=25 name="mi_ip" placeholder="Ip de su cartera">
@@ -21,7 +22,7 @@
                         <small class="lxerror23"></small>
                     </div>
                     <div class="lxbutton23">
-                        <button type="submit" class="lxsubmit23">Pagar</button>
+                        <button type="submit" disabled class="lxsubmit23">Pay</button>
                     </div>
                     <div class="lxcmpos23">
                         <small class="lxgeneralerror23"></small>
@@ -39,7 +40,7 @@
 <script>
 import { mapMutations } from 'vuex'
 export default {
-  name: 'Pagar',
+  name: 'Pay',
   props: ['apiKey', 'ip', 'monto', 'ejecute'],
   methods: {
     show (value) {

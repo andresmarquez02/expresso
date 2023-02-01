@@ -1,11 +1,11 @@
 <template>
-    <div v-if="init">
+    <div v-if="$store.state.init && type">
         <v-alert
+            border="left"
             dismissible
-            shaped
             :type="type"
-            v-model="alerting"
-            style="position:fixed;bottom:0;right:2%"
+            v-model="$store.state.init"
+            style="position:fixed;bottom:0;right:2%;min-width:20rem"
         >
             <div>{{msg || ""}}</div>
         </v-alert>
@@ -13,11 +13,6 @@
 </template>
 <script>
 export default {
-    props: ['msg','type','init'],
-    data() {
-        return {
-            alerting: '',
-        }
-    },
+    props: ['msg','type'],
 }
 </script>

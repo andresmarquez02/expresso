@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
 
@@ -8,32 +7,32 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: () => import('../views/Home.vue')
   },
   {
-    path: '/tienda',
-    name: 'Tienda',
-    component: () => import('../views/Tienda.vue')
+    path: '/store',
+    name: 'Store',
+    component: () => import('../views/Store.vue')
   },
   {
-    path: '/comprar',
-    name: 'Comprar',
-    component: () => import('../views/Comprar.vue')
+    path: '/cart',
+    name: 'Cart',
+    component: () => import('../views/Cart.vue')
   },
   {
-    path: '/detalles/:id',
-    name: 'Detalles',
-    component: () => import('../views/Detalles.vue')
+    path: '/details/:id',
+    name: 'Details',
+    component: () => import('../views/Details.vue')
   },
   {
-    path: '/buscar/producto/:q',
-    name: 'Buscar',
+    path: '/search/:q',
+    name: 'Search',
     component: () => import('../views/Search.vue')
   },
   {
     path: '*',
     name: '404',
-    component: () => import('../views/404.vue')
+    component: () => import('../views/PageNotFound.vue')
   }
 ]
 
